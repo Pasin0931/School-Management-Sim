@@ -78,25 +78,25 @@ export default function DashboardPage() {
                 </Card>
             </div>
 
-            <div className="flex flex-col items-center justify-center w-145 gap-15">
-                <div className="self-start justify-center">
-                    <h2 className="pl-5 pb-1">Students</h2>
-                    <div className="pt-[2px] w-150 rounded-full bg-gray-200"></div>
+            <div className="flex flex-col items-center justify-center w-full max-w-4xl gap-15">
+                <div className="self-start justify-center w-full">
+                    <h2 className="pl-7 pb-1">Students</h2>
+                    <div className="pt-[2px] w-full rounded-full bg-gray-200"></div>
                 </div>
 
-                <div className="self-start justify-center">
-                    <h2 className="pl-5 pb-1">Teachers</h2>
-                    <div className="pt-[2px] w-150 rounded-full bg-gray-200"></div>
+                <div className="self-start justify-center w-full">
+                    <h2 className="pl-7 pb-1">Teachers</h2>
+                    <div className="pt-[2px] w-full rounded-full bg-gray-200"></div>
                 </div>
 
-                <div className="self-start justify-center">
-                    <h2 className="pl-5 pb-1">Schools</h2>
-                    <div className="pt-[2px] w-150 rounded-full bg-gray-200"></div>
+                <div className="self-start justify-center w-full">
+                    <h2 className="pl-7 pb-1">Schools</h2>
+                    <div className="pt-[2px] w-full rounded-full bg-gray-200"></div>
                 </div>
 
-                <div className="self-start justify-center">
-                    <h2 className="pl-5 pb-1">Subjects</h2>
-                    <div className="pt-[2px] w-150 rounded-full bg-gray-200"></div>
+                <div className="self-start justify-center w-full">
+                    <h2 className="pl-7 pb-1">Subjects</h2>
+                    <div className="pt-[2px] w-full rounded-full bg-gray-200"></div>
                 </div>
             </div>
         </div>
