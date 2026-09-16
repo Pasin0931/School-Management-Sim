@@ -36,7 +36,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
 
-        <div className="flex flex-row items-center justify-between bg-gray-300">
+        <div className="flex flex-row items-center justify-between bg-gray-300 mb-10">
           <h1 className="font-bold text-xl pl-5">School Management Simulation</h1>
 
           <div className="flex flex-row items-center justify-center gap-8 pr-5 font-bold h-13">
