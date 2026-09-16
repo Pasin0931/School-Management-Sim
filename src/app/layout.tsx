@@ -41,9 +41,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 
           <div className="flex flex-row items-center justify-center gap-8 pr-5 font-bold h-13">
             <Link href="/" className="hover:underline">Dashboard</Link>
-            <Link href="/view" className="hover:underline">View</Link>
-            <Link href="/creation" className="hover:underline">Creation</Link>
-            <Link href="/aboutme" className="hover:underline">About us</Link>
+            <Link href="/root/view" className="hover:underline">View</Link>
+            <Link href="/root/creation" className="hover:underline">Creation</Link>
+            <Link href="/root/aboutme" className="hover:underline">About us</Link>
           </div>
         </div>
 
