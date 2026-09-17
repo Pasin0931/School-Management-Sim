@@ -47,12 +47,16 @@ type Enrollment = {
     grade: number | null;
 };
 
+type EntityType = "student" | "teacher" | "school" | "subject" | "enrollment"
+
 export default function DashboardPage() {
     const [students, setStudents] = useState<Student[]>([])
     const [schools, setSchools] = useState<School[]>([])
     const [teachers, setTeachers] = useState<Teacher[]>([])
     const [subjects, setSubjects] = useState<AvailableSubjects[]>([])
     const [enrollments, setEnrollments] = useState<Enrollment[]>([])
+
+    const [sel, setSel] = useState<EntityType>("student")
 
     useEffect(() => {
         async function fetchData() {
@@ -83,6 +87,20 @@ export default function DashboardPage() {
 
         fetchData();
     }, []);
+
+    const handle_delete = (id_: string) => {
+        alert(`Deleting ${id_}`)
+    }
+    const handle_delete_en = (id_1: string, id_2: string) => {
+        alert(`Deleting ${id_1} , ${id_2}`)
+    }
+
+    const handle_edit = (id_: string) => {
+        alert(`Editting ${id_}`)
+    }
+    const handle_edit_en = (id_1: string, id_2: string) => {
+        alert(`Editting ${id_1} , ${id_2}`)
+    }
 
     return (
         <div className="flex flex-col items-center justify-center gap-10 pb-10">
@@ -130,8 +148,21 @@ export default function DashboardPage() {
                                     <p><span className="font-bold">Created At:</span> {s.createdAt}</p>
 
                                     <div className="absolute bottom-4 right-4 flex flex-row items-center gap-2">
-                                        <Button><Edit /></Button>
-                                        <Button variant="destructive"><Trash /></Button>
+                                        <Button onClick={() => {
+                                            setSel("student")
+                                            handle_edit(s.stuID)
+                                        }}>
+                                            <Edit />
+                                        </Button>
+                                        <Button
+                                            variant="destructive"
+                                            onClick={() => {
+                                                setSel("student")
+                                                handle_delete(s.stuID)
+                                            }}
+                                        >
+                                            <Trash />
+                                        </Button>
                                     </div>
 
                                 </Card>
@@ -157,8 +188,21 @@ export default function DashboardPage() {
                                     <p><span className="font-bold">Created At:</span> {t.createdAt}</p>
 
                                     <div className="absolute bottom-4 right-4 flex flex-row items-center gap-2">
-                                        <Button><Edit /></Button>
-                                        <Button variant="destructive"><Trash /></Button>
+                                        <Button onClick={() => {
+                                            setSel("teacher")
+                                            handle_edit(t.tID)
+                                        }}>
+                                            <Edit />
+                                        </Button>
+                                        <Button
+                                            variant="destructive"
+                                            onClick={() => {
+                                                setSel("teacher")
+                                                handle_delete(t.tID)
+                                            }}
+                                        >
+                                            <Trash />
+                                        </Button>
                                     </div>
 
                                 </Card>
@@ -183,8 +227,21 @@ export default function DashboardPage() {
                                     <p><span className="font-bold">Registered:</span> {sch.schRegister}</p>
 
                                     <div className="absolute bottom-4 right-4 flex flex-row items-center gap-2">
-                                        <Button><Edit /></Button>
-                                        <Button variant="destructive"><Trash /></Button>
+                                        <Button onClick={() => {
+                                            setSel("school")
+                                            handle_edit(sch.schID)
+                                        }}>
+                                            <Edit />
+                                        </Button>
+                                        <Button
+                                            variant="destructive"
+                                            onClick={() => {
+                                                setSel("school")
+                                                handle_delete(sch.schID)
+                                            }}
+                                        >
+                                            <Trash />
+                                        </Button>
                                     </div>
 
                                 </Card>
@@ -207,8 +264,21 @@ export default function DashboardPage() {
                                     <p><span className="font-bold">Credits:</span> {subj.credits}</p>
 
                                     <div className="absolute bottom-4 right-4 flex flex-row items-center gap-2">
-                                        <Button><Edit /></Button>
-                                        <Button variant="destructive"><Trash /></Button>
+                                        <Button onClick={() => {
+                                            setSel("subject")
+                                            handle_edit(subj.subjectID)
+                                        }}>
+                                            <Edit />
+                                        </Button>
+                                        <Button
+                                            variant="destructive"
+                                            onClick={() => {
+                                                setSel("subject")
+                                                handle_delete(subj.subjectID)
+                                            }}
+                                        >
+                                            <Trash />
+                                        </Button>
                                     </div>
                                 </Card>
                             ))}
@@ -231,8 +301,21 @@ export default function DashboardPage() {
                                     <p><span className="font-bold">Grade:</span> {e.grade ?? "N/A"}</p>
 
                                     <div className="absolute bottom-4 right-4 flex flex-row items-center gap-2">
-                                        <Button><Edit /></Button>
-                                        <Button variant="destructive"><Trash /></Button>
+                                        <Button onClick={() => {
+                                            setSel("enrollment")
+                                            handle_edit_en(e.stuID, e.subjectID)
+                                        }}>
+                                            <Edit />
+                                        </Button>
+                                        <Button
+                                            variant="destructive"
+                                            onClick={() => {
+                                                setSel("enrollment")
+                                                handle_delete_en(e.stuID, e.subjectID)
+                                            }}
+                                        >
+                                            <Trash />
+                                        </Button>
                                     </div>
                                 </Card>
                             ))}
