@@ -145,11 +145,11 @@ export default function DashboardPage() {
         }
     }
 
-    const handle_edit = async (id_: string) => {
-        alert(`Editting ${id_}`)
+    const handle_edit = async (entity: EntityType, id_: string) => {
+        router.push(`/root/updates/${id_}?entity=${entity}`)
     }
     const handle_edit_en = async (id_1: string, id_2: string) => {
-        alert(`Editting ${id_1} , ${id_2}`)
+        router.push(`/root/updates/${id_1}/${id_2}?entity=enrollment`)
     }
 
     return (
@@ -198,10 +198,7 @@ export default function DashboardPage() {
                                     <p><span className="font-bold">Created At:</span> {s.createdAt}</p>
 
                                     <div className="absolute bottom-4 right-4 flex flex-row items-center gap-2">
-                                        <Button onClick={() => {
-                                            setSel("student")
-                                            handle_edit(s.stuID)
-                                        }}>
+                                        <Button onClick={() => handle_edit("student", s.stuID)}>
                                             <Edit />
                                         </Button>
                                         <Button variant="destructive" onClick={() => handle_delete("student", s.stuID)}>
@@ -232,10 +229,7 @@ export default function DashboardPage() {
                                     <p><span className="font-bold">Created At:</span> {t.createdAt}</p>
 
                                     <div className="absolute bottom-4 right-4 flex flex-row items-center gap-2">
-                                        <Button onClick={() => {
-                                            setSel("teacher")
-                                            handle_edit(t.tID)
-                                        }}>
+                                        <Button onClick={() => handle_edit("teacher", t.tID)}>
                                             <Edit />
                                         </Button>
                                         <Button variant="destructive" onClick={() => handle_delete("teacher", t.tID)}>
@@ -265,10 +259,7 @@ export default function DashboardPage() {
                                     <p><span className="font-bold">Registered:</span> {sch.schRegister}</p>
 
                                     <div className="absolute bottom-4 right-4 flex flex-row items-center gap-2">
-                                        <Button onClick={() => {
-                                            setSel("school")
-                                            handle_edit(sch.schID)
-                                        }}>
+                                        <Button onClick={() => handle_edit("school", sch.schID)}>
                                             <Edit />
                                         </Button>
                                         <Button variant="destructive" onClick={() => handle_delete("school", sch.schID)}>
@@ -297,10 +288,7 @@ export default function DashboardPage() {
                                     <p><span className="font-bold">Credits:</span> {subj.credits}</p>
 
                                     <div className="absolute bottom-4 right-4 flex flex-row items-center gap-2">
-                                        <Button onClick={() => {
-                                            setSel("subject")
-                                            handle_edit(subj.subjectID)
-                                        }}>
+                                        <Button onClick={() => handle_edit("subject", subj.subjectID)}>
                                             <Edit />
                                         </Button>
                                         <Button variant="destructive" onClick={() => handle_delete("subject", subj.subjectID)}>
