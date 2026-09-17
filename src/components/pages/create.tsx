@@ -270,7 +270,7 @@ export default function CreatePage() {
                         </div>
                         <div className="flex flex-col gap-2 pb-3">
                             <Label>Created At</Label>
-                            <Input type="date" value={sCreatedAt} onChange={(e) => setSCreatedAt(e.target.value)} />
+                            <Input type="date" lang="en-US" value={sCreatedAt} onChange={(e) => setSCreatedAt(e.target.value)} />
                         </div>
                     </div>
                 )}
@@ -299,7 +299,7 @@ export default function CreatePage() {
                         </div>
                         <div className="flex flex-col gap-2 pb-3">
                             <Label>Created At</Label>
-                            <Input type="date" value={tCreatedAt} onChange={(e) => setTCreatedAt(e.target.value)} />
+                            <Input type="date" lang="en-US" value={tCreatedAt} onChange={(e) => setTCreatedAt(e.target.value)} />
                         </div>
                     </div>
                 )}
@@ -324,7 +324,7 @@ export default function CreatePage() {
                         </div>
                         <div className="flex flex-col gap-2 pb-3">
                             <Label>Register Date</Label>
-                            <Input type="date" value={schRegister} onChange={(e) => setSchRegister(e.target.value)} />
+                            <Input type="date" lang="en-US" value={schRegister} onChange={(e) => setSchRegister(e.target.value)} />
                         </div>
                     </div>
                 )}
@@ -358,7 +358,7 @@ export default function CreatePage() {
                         </div>
                         <div className="flex flex-col gap-2 pb-3">
                             <Label>Enroll Date</Label>
-                            <Input type="date" value={enrollDate} onChange={(e) => setEnrollDate(e.target.value)} />
+                            <Input type="date" lang="en-US" value={enrollDate} onChange={(e) => setEnrollDate(e.target.value)} />
                         </div>
                         <div className="flex flex-col gap-2 pb-3">
                             <Label>Grade</Label>

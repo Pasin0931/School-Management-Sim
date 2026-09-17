@@ -61,21 +61,21 @@ export default function DashboardPage() {
                     fetch("/api/read/s"),
                     fetch("/api/read/t"),
                     fetch("/api/read/sch"),
-                    fetch("/api/read/subj"),
-                    fetch("/api/read/enr"),
+                    fetch("/api/read/sub"),
+                    fetch("/api/read/en"),
                 ]);
 
                 const sData = await sRes.json();
-                // const tData = await tRes.json();
+                const tData = await tRes.json();
                 const schData = await schRes.json();
-                // const subjData = await subjRes.json();
-                // const enrData = await enrRes.json();
+                const subjData = await subjRes.json();
+                const enrData = await enrRes.json();
 
                 setStudents(sData.data);
-                // setTeachers(tData.data);
+                setTeachers(tData.data);
                 setSchools(schData.data);
-                // setSubjects(subjData.data);
-                // setEnrollments(enrData.data);
+                setSubjects(subjData.data);
+                setEnrollments(enrData.data);
             } catch (error) {
                 console.error(error);
             }
