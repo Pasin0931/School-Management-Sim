@@ -4,7 +4,7 @@ export default function AboutUsPage() {
     return (
         <div className="flex flex-col items-center justify-center gap-6 text-center">
             <Card className="px-10 flex flex-col gap-4">
-                <h1 className="text-2xl font-bold text-red-500">User Guide</h1>
+                <h1 className="text-2xl font-bold">User Guide</h1>
 
                 <div className="flex flex-col items-center justify-center gap-2">
                     <ol className="list-decimal list-inside text-gray-600 flex flex-col gap-1 self-start">
@@ -25,7 +25,7 @@ export default function AboutUsPage() {
                     to a normalized MySQL schema and a working Next.js application.
                 </p>
                 <p className="text-sm text-gray-500">Developed by</p>
-                <h2 className="text-md font-bold text-gray-500">Pasin Makcharoen 6810545794</h2>
+                <h2 className="text-lg font-bold text-gray-500">Pasin Makcharoen 6810545794</h2>
             </Card>
         </div>
     )

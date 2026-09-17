@@ -46,7 +46,7 @@ export default function CreatePage() {
 
     const [enrStuID, setEnrStuID] = useState("")
     const [enrSubjectID, setEnrSubjectID] = useState("")
-    const [enrollDate, setEnrollDate] = useState("")
+    const [enrollDate, setEnrollDate] = useState("2000-01-01")
     const [grade, setGrade] = useState("")
 
     const handleSubmit = async () => {
@@ -164,7 +164,7 @@ export default function CreatePage() {
                     return
                 }
 
-                const res = await fetch("/api/create/subj", {
+                const res = await fetch("/api/create/sub", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
@@ -192,7 +192,7 @@ export default function CreatePage() {
                     return
                 }
 
-                const res = await fetch("/api/create/enr", {
+                const res = await fetch("/api/create/en", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
