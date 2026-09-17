@@ -53,7 +53,7 @@ export default function DashboardPage() {
 
     return (
         <div className="flex flex-col items-center justify-center gap-10">
-            <div className="flex flex-row justify-center items-center gap-15" >
+            <div className="flex flex-row justify-center items-center gap-6" >
                 <Card className="flex flex-col justify-center items-center p-4 w-40">
                     <h2>Total Students</h2>
                     <p>{students.length}</p>
