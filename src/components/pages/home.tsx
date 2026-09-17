@@ -131,7 +131,7 @@ export default function DashboardPage() {
 
                                     <div className="absolute bottom-4 right-4 flex flex-row items-center gap-2">
                                         <Button><Edit /></Button>
-                                        <Button><Trash /></Button>
+                                        <Button variant="destructive"><Trash /></Button>
                                     </div>
 
                                 </Card>
@@ -158,7 +158,7 @@ export default function DashboardPage() {
 
                                     <div className="absolute bottom-4 right-4 flex flex-row items-center gap-2">
                                         <Button><Edit /></Button>
-                                        <Button><Trash /></Button>
+                                        <Button variant="destructive"><Trash /></Button>
                                     </div>
 
                                 </Card>
@@ -184,7 +184,7 @@ export default function DashboardPage() {
 
                                     <div className="absolute bottom-4 right-4 flex flex-row items-center gap-2">
                                         <Button><Edit /></Button>
-                                        <Button><Trash /></Button>
+                                        <Button variant="destructive"><Trash /></Button>
                                     </div>
 
                                 </Card>
@@ -208,7 +208,7 @@ export default function DashboardPage() {
 
                                     <div className="absolute bottom-4 right-4 flex flex-row items-center gap-2">
                                         <Button><Edit /></Button>
-                                        <Button><Trash /></Button>
+                                        <Button variant="destructive"><Trash /></Button>
                                     </div>
                                 </Card>
                             ))}
@@ -232,9 +232,8 @@ export default function DashboardPage() {
 
                                     <div className="absolute bottom-4 right-4 flex flex-row items-center gap-2">
                                         <Button><Edit /></Button>
-                                        <Button><Trash /></Button>
+                                        <Button variant="destructive"><Trash /></Button>
                                     </div>
-
                                 </Card>
                             ))}
                         </div>
