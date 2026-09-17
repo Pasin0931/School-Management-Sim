@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 
 import { Trash, Edit } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 type School = {
     schID: string;
@@ -58,6 +59,8 @@ export default function DashboardPage() {
 
     const [sel, setSel] = useState<EntityType>("student")
 
+    const router = useRouter()
+
     useEffect(() => {
         async function fetchData() {
             try {
@@ -75,11 +78,11 @@ export default function DashboardPage() {
                 const subjData = await subjRes.json();
                 const enrData = await enrRes.json();
 
-                setStudents(sData.data);
-                setTeachers(tData.data);
-                setSchools(schData.data);
-                setSubjects(subjData.data);
-                setEnrollments(enrData.data);
+                setStudents(sData.data ?? []);
+                setTeachers(tData.data ?? []);
+                setSchools(schData.data ?? []);
+                setSubjects(subjData.data ?? []);
+                setEnrollments(enrData.data ?? []);
             } catch (error) {
                 console.error(error);
             }
@@ -88,17 +91,64 @@ export default function DashboardPage() {
         fetchData();
     }, []);
 
-    const handle_delete = (id_: string) => {
-        alert(`Deleting ${id_}`)
+    const handle_delete = async (entity: EntityType, id_: string) => {
+        try {
+            if (!confirm("Are you sure ?")) {
+                return
+            }
+
+            let tmp = "s"
+            if (entity === "student") {
+                tmp = "s"
+            }
+            else if (entity === "teacher") {
+                tmp = "t"
+            }
+            else if (entity === "school") {
+                tmp = "sch"
+            }
+            else if (entity === "subject") {
+                tmp = "sub"
+            }
+
+            const res_ = await fetch(`/api/delete/${tmp}/${id_}`, { method: "DELETE" })
+
+            if (!res_.ok) {
+                alert(`Error while deleting -> ${id_}`)
+                return
+            }
+
+            window.location.reload()
+        } catch (error) {
+            alert(`Error while deleting -> ${id_}`)
+            console.error(error)
+        }
     }
-    const handle_delete_en = (id_1: string, id_2: string) => {
-        alert(`Deleting ${id_1} , ${id_2}`)
+    const handle_delete_en = async (id_1: string, id_2: string) => {
+        try {
+            if (!confirm("Are you sure ?")) {
+                return
+            }
+
+            const res_ = await fetch(`/api/delete/en/${id_1}/${id_2}`, { method: "DELETE", })
+
+            if (!res_.ok) {
+                alert(`Error while deleting -> ${id_1}, ${id_2}`)
+                return
+            }
+
+            window.location.reload()
+            return
+        } catch (error) {
+            alert(`Error while deleting -> ${id_1}, ${id_2}`)
+            console.error(`Error while deleting -> ${id_1}, ${id_2}`)
+        }
     }
 
-    const handle_edit = (id_: string) => {
+    const handle_edit = async (id_: string) => {
         alert(`Editting ${id_}`)
     }
-    const handle_edit_en = (id_1: string, id_2: string) => {
+    const handle_edit_en = async (id_1: string, id_2: string) => {
         alert(`Editting ${id_1} , ${id_2}`)
     }
 
@@ -129,7 +179,7 @@ export default function DashboardPage() {
 
             <div className="flex flex-col items-center justify-center w-full max-w-4xl gap-13">
                 <div className="self-start justify-center w-full">
-                    <h2 className="pl-7 pb-1">Students</h2>
+                    <h2 className="pl-7 pb-1 text-xl">Students</h2>
 
                     {students.length === 0 ? (
                         <div className="flex flex-col items-center justify-center pt-2">
@@ -154,13 +204,7 @@ export default function DashboardPage() {
                                         }}>
                                             <Edit />
                                         </Button>
-                                        <Button
-                                            variant="destructive"
-                                            onClick={() => {
-                                                setSel("student")
-                                                handle_delete(s.stuID)
-                                            }}
-                                        >
+                                        <Button variant="destructive" onClick={() => handle_delete("student", s.stuID)}>
                                             <Trash />
                                         </Button>
                                     </div>
@@ -172,7 +216,7 @@ export default function DashboardPage() {
                 </div>
 
                 <div className="self-start justify-center w-full">
-                    <h2 className="pl-7 pb-1">Teachers</h2>
+                    <h2 className="pl-7 pb-1 text-xl">Teachers</h2>
 
                     {teachers.length === 0 ? (
                         <div className="flex flex-col items-center justify-center pt-2">None</div>
@@ -194,13 +238,7 @@ export default function DashboardPage() {
                                         }}>
                                             <Edit />
                                         </Button>
-                                        <Button
-                                            variant="destructive"
-                                            onClick={() => {
-                                                setSel("teacher")
-                                                handle_delete(t.tID)
-                                            }}
-                                        >
+                                        <Button variant="destructive" onClick={() => handle_delete("teacher", t.tID)}>
                                             <Trash />
                                         </Button>
                                     </div>
@@ -212,7 +250,7 @@ export default function DashboardPage() {
                 </div>
 
                 <div className="self-start justify-center w-full">
-                    <h2 className="pl-7 pb-1">Schools</h2>
+                    <h2 className="pl-7 pb-1 text-xl">Schools</h2>
 
                     {schools.length === 0 ? (
                         <div className="flex flex-col items-center justify-center pt-2">None</div>
@@ -233,15 +271,10 @@ export default function DashboardPage() {
                                         }}>
                                             <Edit />
                                         </Button>
-                                        <Button
-                                            variant="destructive"
-                                            onClick={() => {
-                                                setSel("school")
-                                                handle_delete(sch.schID)
-                                            }}
-                                        >
+                                        <Button variant="destructive" onClick={() => handle_delete("school", sch.schID)}>
                                             <Trash />
                                         </Button>
+
                                     </div>
 
                                 </Card>
@@ -251,7 +284,7 @@ export default function DashboardPage() {
                 </div>
 
                 <div className="self-start justify-center w-full">
-                    <h2 className="pl-7 pb-1">Subjects</h2>
+                    <h2 className="pl-7 pb-1 text-xl">Subjects</h2>
 
                     {subjects.length === 0 ? (
                         <div className="flex flex-col items-center justify-center pt-2">None</div>
@@ -270,13 +303,7 @@ export default function DashboardPage() {
                                         }}>
                                             <Edit />
                                         </Button>
-                                        <Button
-                                            variant="destructive"
-                                            onClick={() => {
-                                                setSel("subject")
-                                                handle_delete(subj.subjectID)
-                                            }}
-                                        >
+                                        <Button variant="destructive" onClick={() => handle_delete("subject", subj.subjectID)}>
                                             <Trash />
                                         </Button>
                                     </div>
@@ -287,7 +314,7 @@ export default function DashboardPage() {
                 </div>
 
                 <div className="self-start justify-center w-full">
-                    <h2 className="pl-7 pb-1">Enrollments</h2>
+                    <h2 className="pl-7 pb-1 text-xl">Enrollments</h2>
 
                     {enrollments.length === 0 ? (
                         <div className="flex flex-col items-center justify-center pt-2">None</div>
