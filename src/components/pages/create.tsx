@@ -43,7 +43,7 @@ export default function CreatePage() {
 
     return (
         <div className="flex flex-col items-center justify-center gap-6">
-            <Card className="flex flex-col gap-5">
+            <Card className="flex flex-col gap-5 w-xl p-8">
                 <div className="flex flex-col gap-2">
                     <Label>Entity Type</Label>
                     <Select value={entity} onValueChange={(v) => setEntity(v as EntityType)}>
