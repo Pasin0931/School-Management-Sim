@@ -199,7 +199,7 @@ export default function CreatePage() {
                         stuID: enrStuID,
                         subjectID: enrSubjectID,
                         enrollDate: enrollDate,
-                        grade: grade,
+                        grade: Number(grade),
                     }),
                 });
 
