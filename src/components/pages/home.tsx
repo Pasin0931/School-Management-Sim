@@ -179,7 +179,7 @@ export default function DashboardPage() {
 
             <div className="flex flex-col items-center justify-center w-full max-w-4xl gap-13">
                 <div className="self-start justify-center w-full">
-                    <h2 className="pl-7 pb-1 text-xl">Students</h2>
+                    <h2 className="pl-7 pb-1 text-3xl">Students</h2>
 
                     {students.length === 0 ? (
                         <div className="flex flex-col items-center justify-center pt-2">
@@ -213,7 +213,7 @@ export default function DashboardPage() {
                 </div>
 
                 <div className="self-start justify-center w-full">
-                    <h2 className="pl-7 pb-1 text-xl">Teachers</h2>
+                    <h2 className="pl-7 pb-1 text-3xl">Teachers</h2>
 
                     {teachers.length === 0 ? (
                         <div className="flex flex-col items-center justify-center pt-2">None</div>
@@ -244,7 +244,7 @@ export default function DashboardPage() {
                 </div>
 
                 <div className="self-start justify-center w-full">
-                    <h2 className="pl-7 pb-1 text-xl">Schools</h2>
+                    <h2 className="pl-7 pb-1 text-3xl">Schools</h2>
 
                     {schools.length === 0 ? (
                         <div className="flex flex-col items-center justify-center pt-2">None</div>
@@ -275,7 +275,7 @@ export default function DashboardPage() {
                 </div>
 
                 <div className="self-start justify-center w-full">
-                    <h2 className="pl-7 pb-1 text-xl">Subjects</h2>
+                    <h2 className="pl-7 pb-1 text-3xl">Subjects</h2>
 
                     {subjects.length === 0 ? (
                         <div className="flex flex-col items-center justify-center pt-2">None</div>
@@ -302,7 +302,7 @@ export default function DashboardPage() {
                 </div>
 
                 <div className="self-start justify-center w-full">
-                    <h2 className="pl-7 pb-1 text-xl">Enrollments</h2>
+                    <h2 className="pl-7 pb-1 text-3xl">Enrollments</h2>
 
                     {enrollments.length === 0 ? (
                         <div className="flex flex-col items-center justify-center pt-2">None</div>
