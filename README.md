@@ -5,7 +5,7 @@
 
 ## Selected Option
 
-**Option C — Simple Database Application**
+**Option C - Simple Database Application**
 
 A full web application was built with Next.js and MySQL (via `mysql2`, no ORM), demonstrating:
 - **Adding a new record** — `/root/creation`, a form supporting all 5 entities (School, Student, Teacher, Subject, Enrollment)
@@ -23,7 +23,7 @@ The 5 reporting queries collectively include:
 ## DBMS and Tools Used
 
 - **Database:** MySQL 8.4, hosted on Aiven (cloud MySQL service)
-- **Backend/Frontend:** Next.js (App Router), using the `mysql2` package for raw SQL queries — no ORM
+- **Backend/Frontend:** Next.js (App Router), using the `mysql2` package for raw SQL queries - no ORM
 - **UI:** shadcn/ui components with Tailwind CSS
 - **Deployment:** Vercel
 - **Live app:** https://school-management-sim-rho.vercel.app
@@ -31,25 +31,16 @@ The 5 reporting queries collectively include:
 ## Project Scope
 
 A simplified school management system tracking 5 related tables:
-- **School** — schools in the system
-- **Student** — students enrolled at a school
-- **Teacher** — teachers employed at a school
-- **AvaliableSubjects** — subjects offered
-- **Enrollment** — records of which students are enrolled in which subjects, with grades
-
-## How to Run the SQL Script
-
-1. Create a MySQL database (e.g. `CREATE DATABASE SIMULATION_DATABASE_6810545794;`)
-2. Run the submitted `.sql` file against that database using a MySQL client (Workbench, CLI, etc.):
-   ```
-   mysql -u <user> -p <database_name> < SIMULATION_DATABASE_6810545794.sql
-   ```
-3. The script creates all 5 tables with primary/foreign key constraints, inserts sample data (5+ rows per master table, 10+ rows in Enrollment), and includes the 5 reporting queries at the end of the file.
+- **School** - schools in the system
+- **Student** - students enrolled at a school
+- **Teacher** - teachers employed at a school
+- **AvaliableSubjects** - subjects presents
+- **Enrollment** - records of which students are enrolled in which subjects, with finalized grades
 
 ## How to Run the Web Application
 
 1. Clone the repository and install dependencies:
-   ```
+   ```bash
    npm install
    ```
 2. Create a `.env` file in the project root with your MySQL connection details:
@@ -61,7 +52,7 @@ A simplified school management system tracking 5 related tables:
    DB_NAME=<your-database-name>
    ```
 3. Run the development server:
-   ```
+   ```bash
    npm run dev
    ```
 4. Open `http://localhost:3000` in your browser.
@@ -70,21 +61,8 @@ Alternatively, visit the deployed version directly: https://school-management-si
 
 ## App Navigation
 
-- **Home (/)** — dashboard showing record counts and full listings for all 5 tables, with Edit and Delete actions for each record
-- **/root/creation** — form to create a new record for any of the 5 entities
-- **/root/updates/[id]** — form to update an existing Student, Teacher, School, or Subject record
-- **/root/updates/[id_1]/[id_2]** — form to update an existing Enrollment record (composite key)
-- **/root/view** — Query Type dropdown to run and view results for the 5 SQL reporting queries
-- **/root/aboutme** — project and developer information
-
-## Folder Structure
-
-```
-StudentID_HW7_ProjectName/
-├── 01_Report/StudentID_HW7_Report.pdf
-├── 02_Database/StudentID_HW7.sql
-├── 03_Practical_Database_Use/
-│   └── (application source code and this README's running instructions)
-├── 04_Screenshots/
-└── README.md
-```
+- **Home (`/`)** — dashboard showing record counts and full listings for all 5 tables, with Edit and Delete actions for each record
+- **`/root/creation`** - form to create a new record for any of the 5 entities
+- **`/root/updates`** - form to update an existing records
+- **`/root/view`** - Query Type dropdown to run and view results for the 5 SQL reporting queries
+- **`/root/aboutme`** - project and developer information
