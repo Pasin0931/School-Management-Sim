@@ -114,6 +114,8 @@ export default function ViewPage() {
                         </div>
                     ) : queryChoice === "Query 1" ? (
                         <div className="flex flex-col gap-3">
+                            <h1 className="text-xl font-bold">Query 1: Display Government School Students in Math-Science</h1>
+
                             {query1.map((q1: any, i) => (
                                 <Card key={i} className="p-4">
                                     <p><span className="font-bold">Name:</span> {q1.sName}</p>
@@ -126,6 +128,8 @@ export default function ViewPage() {
                         </div>
                     ) : queryChoice === "Query 2" ? (
                         <div className="flex flex-col gap-3">
+                            <h1 className="text-xl font-bold">Query 2: Display Teacher Count per School</h1>
+
                             {query2.map((q2: any, i) => (
                                 <Card key={i} className="p-4">
                                     <p><span className="font-bold">School:</span> {q2.schName}</p>
@@ -135,6 +139,8 @@ export default function ViewPage() {
                         </div>
                     ) : queryChoice === "Query 3" ? (
                         <div className="flex flex-col gap-3">
+                            <h1 className="text-xl font-bold">Query 3: Display Subjects with 2+ Enrolled Students</h1>
+
                             {query3.map((q3: any, i) => (
                                 <Card key={i} className="p-4">
                                     <p><span className="font-bold">Subject:</span> {q3.subjectName}</p>
@@ -145,6 +151,8 @@ export default function ViewPage() {
                         </div>
                     ) : queryChoice === "Query 4" ? (
                         <div className="flex flex-col gap-3">
+                            <h1 className="text-xl font-bold">Query 4: Display Students Above Average GPAX</h1>
+
                             {query4.map((q4: any, i) => (
                                 <Card key={i} className="p-4">
                                     <p><span className="font-bold">Name:</span> {q4.sName}</p>
@@ -155,6 +163,8 @@ export default function ViewPage() {
                         </div>
                     ) : queryChoice === "Query 5" ? (
                         <div className="flex flex-col gap-3">
+                            <h1 className="text-xl font-bold">Query 5: Display Average Grade and Enrollment per Subject</h1>
+
                             {query5.map((q5: any, i) => (
                                 <Card key={i} className="p-4">
                                     <p><span className="font-bold">Subject:</span> {q5.subjectName}</p>
