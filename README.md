@@ -59,10 +59,22 @@ A simplified school management system tracking 5 related tables:
 
 Alternatively, visit the deployed version directly: https://school-management-sim-rho.vercel.app
 
+## How to Run the SQL Script
+
+1. Create a MySQL database:
+```sql
+   CREATE DATABASE SIMULATION_DATABASE_6810545794;
+```
+2. Run the submitted `.sql` file against that database using a MySQL client (Workbench, CLI, etc.):
+```bash
+   mysql -u <user> -p SIMULATION_DATABASE_6810545794 < SIMULATION_DATABASE_6810545794.sql
+```
+3. The script creates all 5 tables with primary/foreign key constraints and inserts sample data (5+ rows per master table, 10+ rows in Enrollment).
+
 ## App Navigation
 
 - **Home (`/`)** — dashboard showing record counts and full listings for all 5 tables, with Edit and Delete actions for each record
 - **`/root/creation`** - form to create a new record for any of the 5 entities
-- **`/root/updates`** - form to update an existing records
+- **`/root/update`** - form to update an existing records
 - **`/root/view`** - Query Type dropdown to run and view results for the 5 SQL reporting queries
 - **`/root/aboutme`** - project and developer information
