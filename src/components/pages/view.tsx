@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/select"
 import { Card } from "@/components/ui/card"
 
-type Queries = "None" | "Query 1" | "Query 2" | "Query 3" | "Query 4" | "Query 5" | "Query 6"
+type Queries = "None" | "Query 1" | "Query 2" | "Query 3" | "Query 4" | "Query 5"
 
 export default function ViewPage() {
     const [queryChoice, setQueryChoice] = useState<Queries>("None")
@@ -23,15 +23,72 @@ export default function ViewPage() {
     const [query3, setQuery3] = useState([])
     const [query4, setQuery4] = useState([])
     const [query5, setQuery5] = useState([])
-    const [query6, setQuery6] = useState([])
 
     const handle_query_changes = async (this_query: Queries) => {
-        setQueryChoice(this_query)
-        alert("Value changed")
+        try {
+            setQueryChoice(this_query)
+
+            if (this_query === "Query 1") {
+                const res_ = await fetch(`/api/query/?choice=1`)
+                const { data } = await res_.json()
+                setQuery1(data ?? [])
+                setQuery2([])
+                setQuery3([])
+                setQuery4([])
+                setQuery5([])
+            }
+            else if (this_query === "Query 2") {
+                const res_ = await fetch(`/api/query/?choice=2`)
+                const { data } = await res_.json()
+                setQuery1([])
+                setQuery2(data ?? [])
+                setQuery3([])
+                setQuery4([])
+                setQuery5([])
+            }
+            else if (this_query === "Query 3") {
+                const res_ = await fetch(`/api/query/?choice=3`)
+                const { data } = await res_.json()
+                setQuery1([])
+                setQuery2([])
+                setQuery3(data ?? [])
+                setQuery4([])
+                setQuery5([])
+            }
+            else if (this_query === "Query 4") {
+                const res_ = await fetch(`/api/query/?choice=4`)
+                const { data } = await res_.json()
+                setQuery1([])
+                setQuery2([])
+                setQuery3([])
+                setQuery4(data ?? [])
+                setQuery5([])
+            }
+            else if (this_query === "Query 5") {
+                const res_ = await fetch(`/api/query/?choice=5`)
+                const { data } = await res_.json()
+                setQuery1([])
+                setQuery2([])
+                setQuery3([])
+                setQuery4([])
+                setQuery5(data ?? [])
+            }
+            else {
+                setQuery1([])
+                setQuery2([])
+                setQuery3([])
+                setQuery4([])
+                setQuery5([])
+                return
+            }
+        } catch (error) {
+            console.error(error)
+            alert("Error while quering data !")
+        }
     }
 
     return (
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center pt-5">
             <div className="flex flex-col items-center justify-center gap-5 w-250">
                 <div className="flex flex-col gap-2 w-full">
                     <Label>Query Type</Label>
@@ -46,42 +103,68 @@ export default function ViewPage() {
                             <SelectItem value="Query 3">Query 3</SelectItem>
                             <SelectItem value="Query 4">Query 4</SelectItem>
                             <SelectItem value="Query 5">Query 5</SelectItem>
-                            <SelectItem value="Query 6">Query 6</SelectItem>
                         </SelectContent>
                     </Select>
                 </div>
 
-                <Card className="w-full p-10">
+                <div className="w-full pb-4">
                     {queryChoice === "None" ? (
-                        <div>
+                        <div className="flex flex-col items-center justify-center text-xl">
                             <p>Select a query</p>
                         </div>
                     ) : queryChoice === "Query 1" ? (
-                        <div>
-                            
+                        <div className="flex flex-col gap-3">
+                            {query1.map((q1: any, i) => (
+                                <Card key={i} className="p-4">
+                                    <p><span className="font-bold">Name:</span> {q1.sName}</p>
+                                    <p><span className="font-bold">GPAX:</span> {q1.sGPAX}</p>
+                                    <p><span className="font-bold">Curriculum:</span> {q1.curriculum}</p>
+                                    <p><span className="font-bold">Status:</span> {q1.sStatus}</p>
+                                    <p><span className="font-bold">School Org:</span> {q1.schOrganization}</p>
+                                </Card>
+                            ))}
                         </div>
                     ) : queryChoice === "Query 2" ? (
-                        <div>
-
+                        <div className="flex flex-col gap-3">
+                            {query2.map((q2: any, i) => (
+                                <Card key={i} className="p-4">
+                                    <p><span className="font-bold">School:</span> {q2.schName}</p>
+                                    <p><span className="font-bold">Total Teachers:</span> {q2.Total_Teachers}</p>
+                                </Card>
+                            ))}
                         </div>
                     ) : queryChoice === "Query 3" ? (
-                        <div>
-
+                        <div className="flex flex-col gap-3">
+                            {query3.map((q3: any, i) => (
+                                <Card key={i} className="p-4">
+                                    <p><span className="font-bold">Subject:</span> {q3.subjectName}</p>
+                                    <p><span className="font-bold">Credits:</span> {q3.credits}</p>
+                                    <p><span className="font-bold">Total Students Enrolled:</span> {q3.Total_Studnets_Enrolled}</p>
+                                </Card>
+                            ))}
                         </div>
                     ) : queryChoice === "Query 4" ? (
-                        <div>
-
+                        <div className="flex flex-col gap-3">
+                            {query4.map((q4: any, i) => (
+                                <Card key={i} className="p-4">
+                                    <p><span className="font-bold">Name:</span> {q4.sName}</p>
+                                    <p><span className="font-bold">GPAX:</span> {q4.sGPAX}</p>
+                                    <p><span className="font-bold">Average GPAX:</span> {q4.AVG_GPAX}</p>
+                                </Card>
+                            ))}
                         </div>
                     ) : queryChoice === "Query 5" ? (
-                        <div>
-
-                        </div>
-                    ) : queryChoice === "Query 6" ? (
-                        <div>
-
+                        <div className="flex flex-col gap-3">
+                            {query5.map((q5: any, i) => (
+                                <Card key={i} className="p-4">
+                                    <p><span className="font-bold">Subject:</span> {q5.subjectName}</p>
+                                    <p><span className="font-bold">Average Grade:</span> {q5.AVG_GRADE}</p>
+                                    <p><span className="font-bold">Total Students:</span> {q5.TOTAL_STUDENTS}</p>
+                                </Card>
+                            ))}
                         </div>
                     ) : null}
-                </Card>
+                </div>
             </div>
         </div>
     )
